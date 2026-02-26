@@ -1,11 +1,14 @@
-// VIDEO CONFIG
-const VIDEO_IDS = ["g6aia0GQMRw",
-  "puwOdeKHAKY",
-  "R0uNPIa-I9c"];
+// List of YouTube video IDs (no extra parameters)
+const VIDEO_IDS = [
+  "g6aia0GQMRw",
+    "puwOdeKHAKY",
+    "R0uNPIa-I9c"
+];
+
 let currentIndex = 0;
 let player;
 
-// Show instruction to click anywhere
+// Show a click instruction (required for Safari)
 const notice = document.createElement("div");
 notice.innerText = "Click anywhere to start the legendary Floppa music!";
 notice.style.position = "fixed";
@@ -20,6 +23,7 @@ notice.style.borderRadius = "10px";
 notice.style.cursor = "pointer";
 document.body.appendChild(notice);
 
+// Wait for first click
 document.addEventListener("click", startMusic, { once: true });
 
 function startMusic() {
@@ -31,6 +35,7 @@ function startMusic() {
   document.head.appendChild(tag);
 }
 
+// YouTube API callback
 window.onYouTubeIframeAPIReady = function() {
   const playerDiv = document.createElement("div");
   playerDiv.style.width = "1px";
