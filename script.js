@@ -1,7 +1,7 @@
 // ===== CONFIG: list your YouTube video IDs here =====
 const VIDEO_IDS = [
-  ""g6aia0GQMRw&list=RDg6aia0GQMRw&start_radio=1",
-    "puwOdeKHAKY&list=RDpuwOdeKHAKY&start_radio=1"
+  ""g6aia0GQMRw",
+    "puwOdeKHAKY"
 
 ];
 // ====================================================
