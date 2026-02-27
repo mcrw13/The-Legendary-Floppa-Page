@@ -1,4 +1,5 @@
 // List of YouTube video IDs (no extra parameters)
+alert("JS is connected!");
 const VIDEO_IDS = [
   "g6aia0GQMRw",
     "puwOdeKHAKY",
