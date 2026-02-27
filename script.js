@@ -9,7 +9,7 @@ const songs = [
 let audio = new Audio();
 let lastIndex = -1;
 
-// Shuffle function without repeating
+// Get a random song without repeating the last one
 function getRandomSong() {
   let index;
   do {
@@ -19,7 +19,7 @@ function getRandomSong() {
   return songs[index];
 }
 
-// Start music on first click (required for Safari)
+// Start music on first click (Safari requirement)
 document.addEventListener("click", startMusic, { once: true });
 
 function startMusic() {
@@ -31,6 +31,9 @@ function playNext() {
   audio.play();
 
   audio.onended = () => {
-    playNext();
+    // Wait 3 seconds before playing next song
+    setTimeout(() => {
+      playNext();
+    }, 3000); // 3000ms = 3 seconds
   };
 }
