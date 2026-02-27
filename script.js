@@ -19,21 +19,20 @@ function getRandomSong() {
   return songs[index];
 }
 
-// Start music on first click (Safari requirement)
-document.addEventListener("click", startMusic, { once: true });
-
-function startMusic() {
-  playNext();
-}
+// Start playing immediately
+playNext();
 
 function playNext() {
   audio.src = getRandomSong();
-  audio.play();
+  audio.play().catch(() => {
+    // If autoplay blocked, show notice
+    console.log("Autoplay blocked — click anywhere to start music.");
+    document.addEventListener("click", () => audio.play(), { once: true });
+  });
 
   audio.onended = () => {
-    // Wait 3 seconds before playing next song
     setTimeout(() => {
       playNext();
-    }, 3000); // 3000ms = 3 seconds
+    }, 3000); // 3-second wait between songs
   };
 }
