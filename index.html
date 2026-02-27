@@ -34,6 +34,72 @@
         <img src="https://gifdb.com/images/high/angry-floppa-hissing-close-up-newv4kidh6al5qbn.gif" jsaction="" class="sFlh5c FyHeAf iPVvYb" style="max-width: 498px; height: 100px; margin: 0px; width: 100px;" alt="Floppa Head On Rotating Cube GIF | GIFDB.com" jsname="kn3ccd">
 <img src="https://media.tenor.com/z4llFHvQ2mwAAAAM/floppa-floppa-spin.gif" jsaction="" class="sFlh5c FyHeAf iPVvYb" style="max-width: 220px; height: 100px; margin: 0px; width: 119px;" alt="Floppa Spin GIF – Floppa Spin – discover and share GIFs" jsname="kn3ccd">
         <script src="script.js" defer></script>
+
+         <style>
+    #captcha {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      grid-template-rows: repeat(4, 100px);
+      gap: 2px;
+      width: 404px;
+      margin: 20px auto;
+      background-image: url('https://media.printables.com/media/prints/220861/images/2016270_dd096606-42fc-4945-ac2d-c4cb64fd7589/thumbs/inside/1280x960/jpg/ef3.webp'); /* Your image here */
+      background-size: cover;
+    }
+    .square {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #ffffff;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0);
+    }
+    .selected {
+      background-color: rgba(0, 174, 255, 0.5);
+    }
+  </style>
+
+
+<h2 style="text-align: center;">Select all the squares with Big Stein.</h2>
+<div id="captcha"></div>
+<div style="text-align: center;">
+<button onclick="submitCaptcha()">Submit</button>
+</div>
+<script>
+const correctSquares = [0,1,2,4,5,6,7,8,9,10,11,13,14]; // Indexes of “correct” squares (you can change them)
+let selectedSquares = [];
+
+const captcha = document.getElementById('captcha');
+
+// Create 16 squares
+for(let i=0; i<16; i++) {
+  const div = document.createElement('div');
+  div.classList.add('square');
+  div.addEventListener('click', () => {
+    if(div.classList.contains('selected')){
+      div.classList.remove('selected');
+      selectedSquares = selectedSquares.filter(x => x !== i);
+    } else {
+      div.classList.add('selected');
+      selectedSquares.push(i);
+    }
+  });
+  captcha.appendChild(div);
+}
+
+function submitCaptcha(){
+  // Compare selected squares with correct ones
+  selectedSquares.sort();
+  correctSquares.sort();
+
+  if(JSON.stringify(selectedSquares) === JSON.stringify(correctSquares)){
+    alert("uhh..probably human");
+    window.open("https://mcrw13.github.io/The-Legendary-Floppa-Page/", "_blank");
+  } else {
+    alert("bot.");
+    window.open("https://www.youareanidiot.cc/", "_blank");
+  }
+}
+</script>
     </body>
 
 </html>
